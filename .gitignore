@@ -1,0 +1,42 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Go build artifacts
+*.out
+*.a
+*.o
+*.test
+
+# Directories
+bin/
+build/
+vendor/
+node_modules/
+
+# Go module cache
+/go/pkg/
+
+# Temporary files
+*.log
+*.tmp
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+.DS_Store
+
+# Coverage and test reports
+coverage.out
+coverage.txt
+*.prof
+
+# Other unnecessary files
+*.tar.gz
+*.zip
+*.gz
