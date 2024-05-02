@@ -49,7 +49,6 @@ func main() {
 }
 func addConsoleVibesOnStart() {
 
-	// Reading the content of the file "data.txt"
 	data, err := ioutil.ReadFile("./console_art.txt")
 	if err != nil {
 		log.Fatal(err)
