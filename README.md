@@ -59,7 +59,7 @@ To verify the effectiveness of the test, the final command concatenates all file
 
 ## Additional Improvements
 
--- While the current implementation is efficient, there's room for improvement, especially in the reading of which item to remove from the cache. Check the `cache_service` for potential enhancements, indicated by the `@todo` marker on line 74.
--- I could have also added caching for the directory lookup. (Probably would not be that useful though)
--- Maybe we could store files in memory. Could cap the amount to store to be very small and reserved for files either that are accessed within a 5 minute period or specific files specified in the program parameters.
--- Depending on how big the cache file count or size limit is. Run a background task that runs every few minutes to cleanup the cache on files that have not been accessed within a long period. This will just reduce the amount of space that the system will use when not actively fetching and using files.
+- While the current implementation is efficient, there's room for improvement, especially in the reading of which item to remove from the cache. Check the `cache_service` for potential enhancements, indicated by the `@todo` marker on line 74.
+- I could have also added caching for the directory lookup. (Probably would not be that useful though)
+- Maybe we could store files in memory. Could cap the amount to store to be very small and reserved for files either that are accessed within a 5 minute period or specific files specified in the program parameters.
+- Depending on how big the cache file count or size limit is. Run a background task that runs every few minutes to cleanup the cache on files that have not been accessed within a long period. This will just reduce the amount of space that the system will use when not actively fetching and using files.
