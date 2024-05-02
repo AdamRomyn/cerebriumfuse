@@ -33,11 +33,6 @@ func (d *Dir) ReadDirAll(ctx context.Context) ([]fuse.Dirent, error) {
 	fmt.Println("Reading directory: ")
 	entries, err := os.ReadDir(d.Path)
 	if err != nil {
-		fmt.Println("Error reading cache directory: ", err)
-		return nil, err
-	}
-
-	if err != nil {
 		return nil, err
 	}
 

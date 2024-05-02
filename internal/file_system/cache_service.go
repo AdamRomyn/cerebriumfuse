@@ -3,6 +3,7 @@ package filesystem
 import (
 	"crypto/sha256"
 	"fmt"
+	"github.com/adamromyn/cerebriumfuse/internal/file_system/file_utils"
 	"io"
 	"os"
 	"path"
@@ -70,6 +71,7 @@ func AddFileToCache(filePath string, fileHash string) error {
 		var oldestKey string
 		var oldestTime = time.Now()
 
+		// @TODO replace this lookup with a doubly linked list to make this operation O(1) instead of O(n)
 		for k, entry := range fileCache {
 			if entry.LastRead.Before(oldestTime) {
 				oldestTime = entry.LastRead

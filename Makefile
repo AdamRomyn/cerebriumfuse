@@ -12,25 +12,30 @@ build:
 	$(GOBUILD) -o $(BINARY_DIR)/$(BINARY_NAME) -v $(CMD_DIR)
 
 # Test the project
-test:
-	$(GOTEST) -v ./...
+test-cache:
+	cd /mnt
+	cat /mnt/all-projects/project-1/common-lib.py
+	cat /mnt/all-projects/project-2/common-lib.py
+
+	cat /mnt/all-projects/project-1/test-cache1.txt
+	cat /mnt/all-projects/project-1/test-cache2.txt
+
+	find ./test_folders/ssd -type f -exec cat {} \;
 
 # Clean up the binaries
 clean:
 	$(GOCLEAN)
 	rm -f $(BINARY_DIR)/$(BINARY_NAME)
 
+unmount:
+	umount /mnt/all-projects
+
 # Run the program
 run:
 	$(GOBUILD) -o $(BINARY_DIR)/$(BINARY_NAME) -v $(CMD_DIR)
-	sudo ./$(BINARY_DIR)/$(BINARY_NAME) "./test_folders/nfs" "./test_folders/ssd" "/mnt/all-projects"
-
-
-run_in_linux:
-	$(GOBUILD) -o $(BINARY_DIR)/$(BINARY_NAME) -v $(CMD_DIR)
-	sudo ./$(BINARY_DIR)/$(BINARY_NAME) "/mnt/shared_folder/cerebrium/test_folders/nfs" "/mnt/shared_folder/cerebrium/test_folders/ssd" "/mnt/all-projects"
+	./$(BINARY_DIR)/$(BINARY_NAME) "./test_folders/nfs" "./test_folders/ssd" "/mnt/all-projects"
 
 setup:
 	mkdir -p /mnt/all-projects
-	rmdir ../ssd && mkdir ../ssd
+	rm -rf ./test_folders/ssd && mkdir ./test_folders/ssd
 	echo "File system setup for testing"

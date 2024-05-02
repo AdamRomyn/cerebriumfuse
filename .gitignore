@@ -40,3 +40,6 @@ coverage.txt
 *.tar.gz
 *.zip
 *.gz
+
+# Custom
+test_folders/ssd

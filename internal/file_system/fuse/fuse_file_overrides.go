@@ -45,6 +45,8 @@ func (f *File) ReadAll(ctx context.Context) ([]byte, error) {
 		fmt.Println("File not found in cache, reading from nfs")
 		time.Sleep(500 * time.Millisecond)
 		go filesystem.AddFileToCache(filePath, fileHash)
+	} else {
+		fmt.Println("File found in cache")
 	}
 	content, err := ioutil.ReadFile(filePath)
 	if err != nil {
